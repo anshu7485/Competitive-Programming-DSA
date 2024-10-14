@@ -1,0 +1,50 @@
+# stack implementation using array
+
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    # Push operation to add an element to the stack
+    def push(self, value):
+        self.stack.append(value)
+        print(f"{value} pushed to stack.")
+
+    # Pop operation to remove the top element from the stack
+    def pop(self):
+        if len(self.stack) == 0:
+            print("Stack Underflow! The stack is empty.")
+        else:
+            popped_value = self.stack.pop()
+            print(f"{popped_value} popped from stack.")
+
+    # Display operation to print the elements of the stack
+    def display(self):
+        if len(self.stack) == 0:
+            print("Stack is empty.")
+        else:
+            print("Stack elements are:", self.stack)
+
+stack = Stack()
+
+while True:
+    print("\nChoose an option:")
+    print("1. Insert a value (Push)")
+    print("2. Delete the top value (Pop)")
+    print("3. Display the stack")
+    print("4. Exit")
+
+    # Take the user's choice as input
+    choice = int(input("\nEnter your choice: "))
+
+    if choice == 1:
+        value = int(input("Enter the value to insert: "))
+        stack.push(value)
+    elif choice == 2:
+        stack.pop()
+    elif choice == 3:
+        stack.display()
+    elif choice == 4:
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice! Please choose again.")

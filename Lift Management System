@@ -1,0 +1,56 @@
+# Lift Management System Using a Queue:
+
+class lift:
+    def __init__(self):
+        self.queue=[]   # queue to store floor requests
+        self.current_floor=0     # Assume the lift starts at floor 0.
+
+ # function to request the lift to a specific floor
+    def request_floor(self,floor):
+        if floor not in self.queue:
+            self.queue.append(floor)
+            print(f"floor{floor} requested.")
+        else:
+            print(f"floor {floor} is already in the queue. ")
+
+# function to move the lift to the next floor in the queue
+    def move_lift(self):
+        if len(self.queue)==0:
+            print("no more requests . lift is idle at floor",self.current_floor)
+        else:
+            next_floor=self.queue.pop(0)
+            print(f"lift reached floor {self.current_floor} to floor {next_floor}")
+            self.current_floor=next_floor
+            print(f"lift reached floor {self.current_floor}")
+
+# display the current status of the queue
+    def display_queue(self):
+        if len(self.queue)==0:
+            print("No pending floor requests. lift is idle.")
+        else:
+            print(f"pending floor requests: {self.queue}")
+
+lift=lift()
+
+while True:
+    print("\n---Lift Management System---")
+    print("1. Request Lift to a floor")
+    print("2. Move Lift to the next floor")
+    print("3. Display pending floor requests")
+    print("4.Exit")
+
+    choice=int(input("enter your choice:"))
+
+    if choice==1:
+        floor=int(input("Enter the floor number to request the  lift:"))
+        lift.request_floor(floor)
+    elif choice==2:
+        lift.move_lift()
+    elif choice==3:
+        lift.display_queue()
+    elif choice==4:
+        print("Exiting Lift Management System...")
+        break
+    else:
+        print("Invalid choice, please try again.")
+

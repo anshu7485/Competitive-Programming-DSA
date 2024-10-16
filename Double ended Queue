@@ -1,0 +1,57 @@
+from collections import deque
+
+# Create an empty deque
+dq = deque()
+
+
+def display_deque():
+    print(f"Current deque: {list(dq)}")
+
+
+def user_input():
+    print("Options:")
+    print("1. Add value to the front")
+    print("2. Add value to the back")
+    print("3. Remove value from the front")
+    print("4. Remove value from the back")
+    print("5. Exit")
+
+    while True:
+        user_choice = int(input("Enter your choice (1-5): "))
+
+        if user_choice == 1:
+            value = input("Enter the value to add to the front: ")
+            dq.appendleft(value)
+            display_deque()
+
+        elif user_choice == 2:
+            value = input("Enter the value to add to the back: ")
+            dq.append(value)
+            display_deque()
+
+        elif user_choice == 3:
+            if dq:
+                dq.popleft()
+                print("Removed value from the front.")
+            else:
+                print("Deque is empty!")
+            display_deque()
+
+        elif user_choice == 4:
+            if dq:
+                dq.pop()
+                print("Removed value from the back.")
+            else:
+                print("Deque is empty!")
+            display_deque()
+
+        elif user_choice == 5:
+            print("Exiting...")
+            break
+
+        else:
+            print("Invalid choice! Please try again.")
+
+
+# Run the deque operations
+user_input()

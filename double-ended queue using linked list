@@ -1,0 +1,133 @@
+# double-ended queue using linked list
+
+class Node:
+    def __init__(self, value):
+        self.value = value  
+        self.next = None    
+        self.prev = None    
+class Deque:
+    def __init__(self):
+        self.front = None  
+        self.rear = None   
+
+    def is_empty(self):
+        return self.front is None  
+
+    def add_front(self, value):
+        new_node = Node(value)  
+        
+        if self.is_empty():
+            self.front = self.rear = new_node
+        else:
+            new_node.next = self.front
+            self.front.prev = new_node
+            self.front = new_node  
+        
+        print(f"Added {value} to the front of the deque")
+
+    def add_rear(self, value):
+        new_node = Node(value)  
+        
+        if self.is_empty():
+            self.front = self.rear = new_node
+        else:
+            self.rear.next = new_node
+            new_node.prev = self.rear
+            self.rear = new_node  # Update the rear to the new node
+        
+        print(f"Added {value} to the rear of the deque")
+    def remove_front(self):
+        if self.is_empty():
+            print("Deque is empty, nothing to remove from front!")
+            return None
+        
+        removed_value = self.front.value  # Get the value at the front
+        
+        if self.front == self.rear:
+            self.front = self.rear = None
+        else:
+            self.front = self.front.next  
+            self.front.prev = None         
+        
+        print(f"Removed {removed_value} from the front of the deque")
+        return removed_value  # Return the removed value
+
+def remove_rear(self):
+        if self.is_empty():
+            print("Deque is empty, nothing to remove from rear!")
+            return None
+        
+        removed_value = self.rear.value  # Get the value at the rear
+        
+        if self.front == self.rear:
+            self.front = self.rear = None
+        else:
+            self.rear = self.rear.prev  
+            self.rear.next = None         
+        
+        print(f"Removed {removed_value} from the rear of the deque")
+        return removed_value  
+
+    def peek_front(self):
+        if self.is_empty():
+            print("Deque is empty, nothing to peek from front!")
+            return None
+        return self.front.value  
+
+    def peek_rear(self):
+        if self.is_empty():
+            print("Deque is empty, nothing to peek from rear!")
+            return None
+        return self.rear.value  
+    def display(self):
+        if self.is_empty():
+            print("Deque is empty")
+            return
+        
+        current = self.front
+        print("Deque elements:")
+        while current:  
+            print(current.value, end=" <-> ")
+            current = current.next
+        print("None")
+
+if __name__ == "__main__":
+    deque = Deque()  # Create a deque object
+    
+    while True:
+        print("\n1. Add to Front")
+        print("2. Add to Rear")
+        print("3. Remove from Front")
+        print("4. Remove from Rear")
+        print("5. Peek at Front")
+        print("6. Peek at Rear")
+        print("7. Display Deque")
+        print("8. Exit")
+        
+        choice = int(input("Enter your choice: "))
+        
+        if choice == 1:
+            value = int(input("Enter the value to add to the front: "))
+            deque.add_front(value)
+        elif choice == 2:
+            value = int(input("Enter the value to add to the rear: "))
+            deque.add_rear(value)
+        elif choice == 3:
+            deque.remove_front()
+        elif choice == 4:
+            deque.remove_rear()
+        elif choice == 5:
+            front_value = deque.peek_front()
+            if front_value is not None:
+                print(f"Front value is: {front_value}")
+        elif choice == 6:
+            rear_value = deque.peek_rear()
+            if rear_value is not None:
+                print(f"Rear value is: {rear_value}")
+        elif choice == 7:
+            deque.display()
+        elif choice == 8:
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice, please try again.")

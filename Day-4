@@ -1,0 +1,77 @@
+
+# stack using a linked list in Python.
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+class Stack:
+    def __init__(self):
+        self.top = None
+
+    def is_empty(self):
+        return self.top is None
+
+
+    def push(self, value):
+        new_node = Node(value)
+        new_node.next = self.top
+        self.top = new_node
+        print(f"Pushed {value} onto the stack")
+
+    def pop(self):
+        if self.is_empty():
+            print("Stack is empty, nothing to pop!")
+            return None
+        popped_value = self.top.value
+        self.top = self.top.next
+        print(f"Popped {popped_value} from the stack")
+        return popped_value
+
+    def peek(self):
+        if self.is_empty():
+            print("Stack is empty, nothing to peek!")
+            return None
+        return self.top.value
+
+    def display(self):
+        if self.is_empty():
+            print("Stack is empty")
+        else:
+            current = self.top
+            print("Stack elements:")
+            while current:
+                print(current.value, end=" -> ")
+                current = current.next
+            print("None")
+
+
+if __name__ == "__main__":
+    stack = Stack()
+
+    while True:
+        print("\n1. Push")
+        print("2. Pop")
+        print("3. Peek")
+        print("4. Display Stack")
+        print("5. Exit")
+
+        choice = int(input("Enter your choice: "))
+
+        if choice == 1:
+            value = int(input("Enter the value to push onto the stack: "))
+            stack.push(value)
+        elif choice == 2:
+            stack.pop()
+        elif choice == 3:
+            top_value = stack.peek()
+            if top_value is not None:
+                print(f"Top value is: {top_value}")
+        elif choice == 4:
+            stack.display()
+        elif choice == 5:
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice, please try again.")

@@ -1,0 +1,100 @@
+# circular queue using a linked list 
+class Node:
+    def __init__(self, value):
+        self.value = value  # Stores the data (value) of the node
+        self.next = None    # Pointer to the next node (initially set to None)
+
+# CircularQueue class to implement a circular queue using a linked list
+class CircularQueue:
+    def __init__(self):
+        self.front = None  # Initialize the front of the queue
+        self.rear = None   # Initialize the rear of the queue
+
+    # Method to check if the queue is empty
+    def is_empty(self):
+        return self.front is None  # Queue is empty if front is None
+
+    # Method to add (enqueue) a value to the circular queue
+    def enqueue(self, value):
+        new_node = Node(value)  # Create a new node with the given value
+        
+        if self.is_empty():
+            # If the queue is empty, both front and rear will point to the new node
+            self.front = self.rear = new_node
+            new_node.next = new_node  # Link the node to itself (circular link)
+        else:
+            self.rear.next = new_node  # Link the current rear to the new node
+            new_node.next = self.front # Link the new node to the front (circular link)
+            self.rear = new_node       # Update the rear to point to the new node
+
+        print(f"Enqueued {value} to the queue")
+
+    # Method to remove (dequeue) a value from the circular queue
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty, nothing to dequeue!")
+            return None
+        
+        dequeued_value = self.front.value  # Get the value at the front
+        
+        if self.front == self.rear:
+            # If there is only one element, set both front and rear to None
+            self.front = self.rear = None
+        else:
+            self.front = self.front.next   # Move the front pointer to the next node
+            self.rear.next = self.front    # Maintain the circular link (rear points to new front)
+        
+        print(f"Dequeued {dequeued_value} from the queue")
+        return dequeued_value  # Return the dequeued value
+
+    # Method to peek at the front of the queue without removing it
+    def peek(self):
+        if self.is_empty():
+            print("Queue is empty, nothing to peek!")
+            return None
+        return self.front.value  # Return the value at the front of the queue
+
+    # Method to display the circular queue
+    def display(self):
+        if self.is_empty():
+            print("Queue is empty")
+            return
+        
+        current = self.front
+        print("Queue elements:")
+        while True:
+            print(current.value, end=" -> ")
+            current = current.next
+            if current == self.front:  # Stop when we come back to the front
+                break
+        print("Circular to front")
+
+# Main program to interact with the user
+if __name__ == "__main__":
+    queue = CircularQueue()  # Create a circular queue object
+    
+    while True:
+        print("\n1. Enqueue")
+        print("2. Dequeue")
+        print("3. Peek")
+        print("4. Display Queue")
+        print("5. Exit")
+        
+        choice = int(input("Enter your choice: "))
+        
+        if choice == 1:
+            value = int(input("Enter the value to enqueue into the queue: "))
+            queue.enqueue(value)
+        elif choice == 2:
+            queue.dequeue()
+        elif choice == 3:
+            front_value = queue.peek()
+            if front_value is not None:
+                print(f"Front value is: {front_value}")
+        elif choice == 4:
+            queue.display()
+        elif choice == 5:
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice, please try again.")

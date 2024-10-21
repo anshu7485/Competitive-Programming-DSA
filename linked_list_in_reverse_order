@@ -1,0 +1,86 @@
+# linked list in reverse order using recurson.
+class Node:
+    def __init__(self, value):
+        self.value = value  
+        self.next = None  
+
+class LinkedList:
+    def __init__(self):
+        self.head = None  
+
+    def is_empty(self):
+        return self.head is None  
+
+    def insert(self, value):
+        new_node = Node(value)  
+        if self.is_empty():
+            self.head = new_node  
+        else:
+            current = self.head
+            while current.next:  
+                current = current.next
+            current.next = new_node  
+        print(f"Inserted {value} into the list")
+
+    def delete(self, value):
+        if self.is_empty():
+            print("List is empty, nothing to delete!")
+            return
+
+        if self.head.value == value:
+            self.head = self.head.next  
+            print(f"Deleted {value} from the list")
+            return
+
+        current = self.head
+        prev = None
+        while current and current.value != value:
+            prev = current
+            current = current.next
+
+        if current is None:
+            print(f"{value} not found in the list!")
+        else:
+            prev.next = current.next  
+            print(f"Deleted {value} from the list")
+
+    # Recursive function to print the list in reverse
+    def print_reverse(self, node):
+        if node is None:  # Base case: if the node is None, return
+            return
+        self.print_reverse(node.next)  
+        print(node.value, end=" ")  
+
+    # Method to call the recursive reverse print function
+    def display_reverse(self):
+        if self.is_empty():
+            print("List is empty!")
+        else:
+            print("List in reverse order:")
+            self.print_reverse(self.head)  
+            print()  
+
+if __name__ == "__main__":
+    linked_list = LinkedList()  # Create a linked list object
+
+    while True:
+        print("\n1. Insert value")
+        print("2. Delete value")
+        print("3. Print list in reverse")
+        print("4. Exit")
+
+        choice = int(input("Enter your choice: "))
+
+        if choice == 1:
+            value = int(input("Enter the value to insert: "))
+            linked_list.insert(value)
+        elif choice == 2:
+            value = int(input("Enter the value to delete: "))
+            linked_list.delete(value)
+        elif choice == 3:
+            linked_list.display_reverse()
+        elif choice == 4:
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice, please try again.")

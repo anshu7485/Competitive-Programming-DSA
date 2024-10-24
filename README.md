@@ -129,5 +129,25 @@ The project includes the following operations:
 - **Structure of Graph and Node Representation**:
   - 💡 **Concepts Covered**: Understanding the fundamental structure for graph nodes.
 
+<h1> Project </h1>
+# 📚 Auto-Suggestion System Using Trie
+
+This project is an **Auto-Suggestion System** implemented using the Trie (prefix tree) data structure. It allows you to search for words in a dictionary and get suggestions based on the prefix you input.
+
+## ✨ Features
+- 🚀 Insert words from a CSV file into the Trie.
+- 🔍 Search for words and confirm their presence.
+- 💡 Get word suggestions based on a given prefix.
+- 🎯 Limit the number of suggestions to a maximum of 5 (modifiable).
+
+## 🗂 Project Structure
+
+```bash
+Auto-Suggestion-System
+│
+├── 📄 Book1.csv           # CSV file containing the words
+├── 🐍 trie_auto_suggest.py  # Python script implementing the Trie and auto-suggestion functionality
+├── 📜 README.md           # Documentation file
+└── ❌ .gitignore          # (Optional) To ignore unnecessary files for Git
 
 ---

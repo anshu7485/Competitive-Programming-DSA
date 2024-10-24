@@ -68,4 +68,66 @@
     - ➖ **Delete**: Removes a specific element.
     - 📜 **Display**: Shows all elements in both directions.
 
+## 🗓️ Day 6
+
+# 🌳 Binary Search Tree (BST) Operations 
+
+This project demonstrates the basic operations of a **Binary Search Tree (BST)** using the C programming language. A Binary Search Tree is a hierarchical data structure where each node has at most two children, and for each node, the left subtree contains nodes with values less than the node's value, and the right subtree contains nodes with values greater than the node's value.
+
+## 🚀 Features  
+The project includes the following operations:
+1. **Insertion**: Add a new node to the BST.
+2. **Deletion**: Remove a node from the BST.
+3. **Traversal**: Display the tree in three different ways:
+   - **Inorder** Traversal: Left, Root, Right
+   - **Preorder** Traversal: Root, Left, Right
+   - **Postorder** Traversal: Left, Right, Root
+
+## 🔧 How to Use
+
+1. **Clone the repository** to your local machine:
+   ```bash
+   git clone https://github.com/your-username/bst-operations.git
+
+## 🗓️ Day 7
+### Graph Representation in C:
+- 🌐 **Concepts Covered**: Understanding graph representation using **adjacency matrix** and **adjacency list**.
+- 🔄 **Key Operations**: Adding edges, displaying the graph.
+
+### Depth-First Search (DFS) Implementation:
+- 🧗‍♂️ **Concepts Covered**: Traversing a graph using **DFS**.
+- 🔄 **Key Operations**: Recursive and iterative implementations.
+
+## 🗓️ Day 8
+### Sorting Algorithms:
+- **Bubble Sort Algorithm**:
+  - 💡 **Concepts Covered**: Basic sorting technique using nested loops.
+
+- **Merge Sort Algorithm**:
+  - 💡 **Concepts Covered**: Divide and conquer technique for sorting.
+  
+- **QuickSort Algorithm**:
+  - 💡 **Concepts Covered**: Efficient sorting using partitioning.
+
+### Search Algorithms:
+- **Linear Search Algorithm**:
+  - 💡 **Concepts Covered**: Simple search technique through sequential access.
+
+- **Efficiently Finding Elements in a Sorted Array**:
+  - 💡 **Concepts Covered**: Utilizing binary search techniques for faster lookups.
+
+### Graph Algorithms:
+- **Graph Representation Using Adjacency List**:
+  - 💡 **Concepts Covered**: Efficiently representing graphs for traversal and manipulation.
+
+- **Dijkstra's Algorithm for Shortest Path**:
+  - 💡 **Concepts Covered**: Finding the shortest path in a weighted graph.
+
+- **Constructing Minimum Spanning Tree Using Kruskal's Algorithm**:
+  - 💡 **Concepts Covered**: Finding MST using edge sorting and union-find.
+
+- **Structure of Graph and Node Representation**:
+  - 💡 **Concepts Covered**: Understanding the fundamental structure for graph nodes.
+
+
 ---
